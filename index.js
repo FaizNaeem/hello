@@ -1,18 +1,18 @@
 const exprees = require('express')
 // const router = require('./Routes/user')
 const app = exprees()
-const cors = require("cors")
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const  route  = require('./Routes/UserRoute')
+const cors = require("cors")
 app.use(cors())
+app.use(morgan("tiny"))
+app.use(exprees.json())
 mongoose.connect('mongodb+srv://faiz:faiz@cluster0.enqka2g.mongodb.net/').then(()=>{
     console.log("connect mongoDb");
 })
 .catch((err)=>{console.log(err);})
 
-app.use(morgan("tiny"))
-app.use(exprees.json())
 // app.use('/user', router)
 const middelever=(req ,res , next)=>{
 console.log("Middlewere console");
